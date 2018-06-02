@@ -1,13 +1,17 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from .models import empleado, afiliado, registro
 # Create your views here.
 from django.views.generic import TemplateView,CreateView,ListView,UpdateView,DeleteView
+from .forms import empleadoForm, afiliadoForm, registroForm
+
+def principal(request):
+    return render(request, 'index.html')
 
 #registro
 class vistaRegistro(CreateView):
 	template_name = 'registro.html'
 	form_class = registroForm
-	success_url = 'registro.html'
+	success_url = 'listaRegistro'
 
 class listaRegistro(ListView):
 	template_name = 'listaRegistro.html'
@@ -37,7 +41,7 @@ def create_empleado(request):
             return redirect('empleado_list')
     else:
         formulario = empleadoForm()
-    return render(request, 'create_empleado.html', {'formulario': formulario})
+    return render(request, 'empleado.html', {'formulario': formulario})
 
 def empleado_list(request):
     empleado_list = empleado.objects.all()
@@ -47,13 +51,13 @@ def empleado_list(request):
 #start afiliado
 def create_afiliado(request):
     if request.method == 'POST':
-        formulario = afiliateForm(request.POST, request.FILES)
+        formulario = afiliadoForm(request.POST, request.FILES)
         if formulario.is_valid():
             formulario.save()
             return redirect('afiliado_list')
     else:
         formulario = afiliadoForm()
-    return render(request, 'create_afiliado.html', {'formulario': formulario})
+    return render(request, 'afiliado.html', {'formulario': formulario})
 
 def afiliado_list(request):
     afiliado_list = afiliado.objects.all()

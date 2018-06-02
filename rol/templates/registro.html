@@ -1,8 +1,11 @@
 {% extends 'base.html' %}
 
 {% block content %}
+<a href="{% url 'principal' %}">Pagina principal</a>
 <h4>Crear nuevo registro</h4>
 	<form method="POST">
 		{% csrf_token %}
-		{{ form.as_li }}
+		{{ form.as_p }}
+		<p><input type='submit' value='Guardar'/></p>
+	</form>
 {% endblock %}

@@ -2,8 +2,12 @@ from django.urls import path
 from django.conf import settings
 from django.conf.urls.static import static
 from .views import vistaRegistro, listaRegistro, editarRegistro, eliminarRegistro
+from .views import create_empleado, empleado_list
+from .views import create_afiliado, afiliado_list
+from .views import principal
 
 urlpatterns = [
+    path('', principal, name = 'principal'),
     path('registro', vistaRegistro.as_view(), name = 'registro'),
     path('listaRegistro', listaRegistro.as_view(), name = 'listaRegistro'),
     path('editarRegistro/(?P<pk>\d+)/', editarRegistro.as_view(), name = 'editarRegistro'),

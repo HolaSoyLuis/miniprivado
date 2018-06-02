@@ -1,11 +1,12 @@
 {% extends 'base.html' %}
 {% load staticfiles %}
 {% block content %}
+<a href="{% url 'principal' %}">Pagina principal</a>
 <div>
 <h3>Lista de afiliados</h3>
 <div>
     <div>
-        <table>
+        <table border= "5">
             <tr>
                 <td>Nombre</td>
                 <td>Direccion</td>
@@ -31,13 +32,13 @@
                 <td>{{ obj.genero }}</td>
                 <td>{{ obj.cuota }}</td>
                 <td>{{ obj.baja }}</td>
-                <td> <img src="{{ MEDIA_URL }}{{ obj.fotografia }}" width="150px" height="150px" /> </td>
+                <td> <img src="{{ MEDIA_URL }}{{ obj.fotografia }}" width="150px" height="150px"/> </td>
             </tr>
         {% endfor %}
         </table>
     </div>
 </div>
 <center>
-    <a href="{% url 'create_afiliado' %}">Ingresar nuevo afiliado</a>      
+    <a href="{% url 'create_afiliado' %}">Ingresar nuevo afiliado</a>
 </center>
 {% endblock %}

@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<form method="POST">
+	{% csrf_token %}
+	<p>¿Desea Eliminar el registro?</p>
+	<button type="submit">Sí, Eliminar</button>
+	<blockquote><a href="{% url 'principal' %}">Cancelar</a></blockquote>
+</form>
+
+{% endblock %}
