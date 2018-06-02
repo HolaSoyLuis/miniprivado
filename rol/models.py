@@ -19,7 +19,7 @@ class empleado(models.Model):
     genero_choices = (('M','M'),('F','F'),)
     genero = models.CharField(max_length = 1, choices = genero_choices)
     puesto_choices = (('Administrador','Administrador'),('Registro','Registro'),)
-    puesto = models.CharField(max_length = 13)
+    puesto = models.CharField(max_length = 13, choices = puesto_choices)
 
     def __str__(self):
         return '%s' % (self.nombre)
@@ -31,7 +31,8 @@ class afiliado(models.Model):
     nombre = models.CharField(max_length = 150)
     direccion = models.CharField(max_length = 200)
     aldea = models.CharField(max_length = 100)
-    municipio = models.CharField(max_length = 100)
+    municipio_choices = (('Comitancillo','Comitancillo'),('San Lorenzo','San Lorenzo'),)
+    municipio = models.CharField(max_length = 12, choices = municipio_choices)
     celular = models.CharField(max_length = 15)
     dpi = models.CharField(max_length = 15)
     edad = models.IntegerField()
@@ -64,6 +65,8 @@ class registro(models.Model):
     lugar = models.CharField(max_length = 12, choices = lugar_choices)
     #el numero de turno sera tomado de el id de la tabla registro
     affiliate = models.ForeignKey(afiliado, on_delete = models.CASCADE)
+    tratamiento_choices = (('Rellenos','Rellenos'), ('T. de canales','T. de canales'), ('Limpieza','Limpieza'), ('Extracciones', 'Extracciones'),)
+    tratamiento = models.CharField(max_length = 15, choices = tratamiento_choices)
 
     def __str__(self):
-        return '%s' % (self.empleado)
+        return '%s %s %s' % (self.empleado, self.affiliate, self.tratamiento)

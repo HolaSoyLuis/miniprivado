@@ -63,3 +63,31 @@ def afiliado_list(request):
     afiliado_list = afiliado.objects.all()
     return render(request, 'afiliado_list.html', {'afiliado_list': afiliado_list})
 #end afiliado
+
+#filtros por lugar
+def registro_comitancillo(request):
+    profile_list = registro.objects.filter(lugar = 'Comitancillo')
+    return render(request, 'listaRegistro.html', {'object_list': profile_list})
+
+def registro_lorenzo(request):
+    profile_list = registro.objects.filter(lugar = 'San Lorenzo')
+    return render(request, 'listaRegistro.html', {'object_list': profile_list})
+#fin filtros por lugar
+
+#filtros por tratamiento
+def registro_relleno(request):
+    profile_list = registro.objects.filter(tratamiento = 'Rellenos')
+    return render(request, 'listaRegistro.html', {'object_list': profile_list})
+
+def registro_canales(request):
+    profile_list = registro.objects.filter(tratamiento = 'T. de canales')
+    return render(request, 'listaRegistro.html', {'object_list': profile_list})
+
+def registro_limpieza(request):
+    profile_list = registro.objects.filter(tratamiento = 'Limpieza')
+    return render(request, 'listaRegistro.html', {'object_list': profile_list})
+
+def registro_extraccion(request):
+    profile_list = registro.objects.filter(tratamiento = 'Extraccion')
+    return render(request, 'listaRegistro.html', {'object_list': profile_list})
+#fin filtros por tratamiento
