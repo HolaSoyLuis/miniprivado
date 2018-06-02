@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h3>Listado de registros</h3>
+<table>
+	<tr>
+		<td>Empleado</td>
+		<td>Fecha</td>
+		<td>Hora</td>
+		<td>Lugar</td>
+		<td>Afiliado</td>
+		<td>Editar</td>
+		<td>Eliminar</td>
+	</tr>
+	{% for est in object_list %}
+	<tr>
+		<td>{{ est.employ }}</td>
+		<td>{{ est.fecha }}</td>
+		<td>{{ est.hora }}</td>
+		<td>{{ est.lugar }}</td>
+		<td>{{ est.affiliate }}</td>
+		<td><a href="{% url 'editarRegistro' est.id %}">Editar</a></td>
+		<td><a href="{% url 'eliminarRegistro' est.id %}">Eliminar</a></td>
+	</tr>
+	{% endfor %}
+</table>
+{% endblock %}

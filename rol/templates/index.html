@@ -5,14 +5,14 @@
 <h3>Bienvenido a la pagina principal</h3>
 <br>
 <p>Selecciona uno de los enlaces posteriores:</p>
-<a href="">Crear empleado</a>
-<a href="">Crear Afiliado</a>
-<a href="">Crear Registro</a>
+<a href="{% url 'create_empleado' %}">Crear empleado</a>
+<a href="{% url 'create_afiliado' %}">Crear Afiliado</a>
+<a href="{% url 'registro' %}">Crear Registro</a>
 
 <br>
 <p>Listado de informacion</p>
-<a href="">Lista de empleados</a>
-<a href="">Lista de Afiliados</a>
-<a href="">Listado de registros</a>
+<a href="{% url 'empleado_list' %}">Lista de empleados</a>
+<a href="{% url 'afiliado_list' %}">Lista de Afiliados</a>
+<a href="{% url 'listaRegistro' %}">Listado de registros</a>
 
 {% endblock %}

@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+{% block content %}
+<div>
+<h3>Lista de afiliados</h3>
+<div>
+    <div>
+        <table>
+            <tr>
+                <td>Nombre</td>
+                <td>Direccion</td>
+                <td>Aldea</td>
+                <td>Municipio</td>
+                <td>Celular</td>
+                <td>DPI</td>
+                <td>Edad</td>
+                <td>Genero</td>
+                <td>Cuota</td>
+                <td>De baja?</td>
+                <td>Fotografia</td>
+            </tr>
+        {% for obj in afiliado_list %}
+            <tr>
+                <td>{{ obj.nombre }}</td>
+                <td>{{ obj.direccion }}</td>
+                <td>{{ obj.aldea }}</td>
+                <td>{{ obj.municipio }}</td>
+                <td>{{ obj.celular }}</td>
+                <td>{{ obj.dpi }}</td>
+                <td>{{ obj.edad }}</td>
+                <td>{{ obj.genero }}</td>
+                <td>{{ obj.cuota }}</td>
+                <td>{{ obj.baja }}</td>
+                <td> <img src="{{ MEDIA_URL }}{{ obj.fotografia }}" width="150px" height="150px" /> </td>
+            </tr>
+        {% endfor %}
+        </table>
+    </div>
+</div>
+<center>
+    <a href="{% url 'create_afiliado' %}">Ingresar nuevo afiliado</a>      
+</center>
+{% endblock %}
